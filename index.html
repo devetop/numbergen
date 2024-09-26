@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random 12 Digit Number Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random 12 Digit Number Generator</h1>
+        <div id="number" style="font-size: 24px; margin: 20px 0;"></div>
+        <button onclick="generateNumber()">Generate</button>
+        <button onclick="copyToClipboard()">Copy</button>
+    </div>
+    
+    <script>
+        function generateNumber() {
+            const randomNum = Math.floor(100000000000 + Math.random() * 900000000000);
+            document.getElementById('number').textContent = randomNum;
+        }
+
+        function copyToClipboard() {
+            const numberText = document.getElementById('number').textContent;
+            if (numberText) {
+                navigator.clipboard.writeText(numberText)
+                    .then(() => {
+                        <!---alert('Nomor berhasil disalin: ' + numberText);-->
+                    })
+                    .catch(err => {
+                        alert('Gagal menyalin: ' + err);
+                    });
+            } else {
+                alert('Silakan generate nomor terlebih dahulu.');
+            }
+        }
+    </script>
+</body>
+</html>
